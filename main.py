@@ -36,7 +36,6 @@ def video_analiz_et():
     if model is None:
         if not modeli_yukle(): return
 
-    # Video dosyasını seçtirme
     dosya_yolu = filedialog.askopenfilename(
         title="Araba Videosu Seç",
         filetypes=[("Video Dosyaları", "*.mp4 *.avi *.mov *.mkv")]
@@ -55,15 +54,12 @@ def video_analiz_et():
     while True:
         ret, frame = cap.read()
         if not ret:
-            break  # Video bittiğinde döngüden çık
+            break
 
-        # GÜNCELLEME 1: conf=0.25'e düşürüldü ve imgsz=640 eklendi
         sonuclar = model.track(source=frame, conf=0.30, imgsz=640, persist=True, tracker="bytetrack.yaml", verbose=False)
 
-        # Etiketlenmiş frame'i al
         cizili_frame = sonuclar[0].plot()
 
-        # GÜNCELLEME 2: Görüntü çok büyükse ekrana sığdırmak ve akıcılığı artırmak için küçült (1280px genişlik)
         frame_h, frame_w = cizili_frame.shape[:2]
         if frame_w > 1280:
             oran = 1280 / frame_w
@@ -133,8 +129,6 @@ class EtiketlemePenceresi:
         self.top.title("Manuel Etiketleme ve Veri Seti Oluşturma (SERİ ÜRETİM MODU)")
         self.top.geometry("1000x800")
         self.top.configure(bg="#eee")
-
-        # Yeni Liste ve Sayaç Değişkenleri
         self.image_list = []
         self.current_index = 0
 
@@ -175,7 +169,7 @@ class EtiketlemePenceresi:
         self.canvas.bind("<B1-Motion>", self.cizim_yap)
         self.canvas.bind("<ButtonRelease-1>", self.cizim_bitir)
 
-        # --- KLAVYE VE FARE KISAYOLLARI (SPEEDRUN MODU) ---
+        # --- KLAVYE VE FARE KISAYOLLARI ---
         self.top.bind("<Control-s>", lambda event: self.etiketi_kaydet())
         self.top.bind("<Control-S>", lambda event: self.etiketi_kaydet())
 
@@ -184,7 +178,7 @@ class EtiketlemePenceresi:
         self.top.bind("3", lambda event: self.kisayol_sinif_sec(2))
         self.top.bind("4", lambda event: self.kisayol_sinif_sec(3))
 
-        # SAĞ TIK ile sonraki fotoğrafa geçme (<Button-3> Tkinter'da sağ tık demektir)
+        # SAĞ TIK ile sonraki fotoğrafa geçme
         self.top.bind("<Button-3>", lambda event: self.resmi_atla())
         self.canvas.bind("<Button-3>", lambda event: self.resmi_atla())
 
@@ -312,7 +306,6 @@ class EtiketlemePenceresi:
 #   ANA MENÜ  
 ana_pencere = tk.Tk()
 ana_pencere.title("Araç Kasası Tanımlama By eaS")
-# Buton sığsın diye pencereyi biraz büyüttüm
 ana_pencere.geometry("500x550")
 ana_pencere.configure(bg="#39006e")
 
@@ -324,7 +317,7 @@ btn_analiz = tk.Button(ana_pencere, text="🖼️ Resim Seç ve Analiz Et", font
                        fg="white", width=25, height=2, cursor="hand2", command=analiz_modu_ac)
 btn_analiz.pack(pady=10)
 
-# YENİ EKLENEN VİDEO ANALİZİ BUTONU
+# VİDEO ANALİZİ BUTONU
 btn_video = tk.Button(ana_pencere, text="🎬 Video Seç ve Analiz Et", font=("Segoe UI", 12, "bold"), bg="#008080",
                       fg="white", width=25, height=2, cursor="hand2", command=video_analiz_et)
 btn_video.pack(pady=10)
