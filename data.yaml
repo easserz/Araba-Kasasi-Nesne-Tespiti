@@ -1,0 +1,6 @@
+train: /dataset/train/images # Görsel Yolları
+val: /dataset/train/valid/images
+test: /dataset/train/test/images
+
+nc: 4
+names: ['Coupe', 'Hatchback', 'SUV', 'Sedan'] # Sınıflar
