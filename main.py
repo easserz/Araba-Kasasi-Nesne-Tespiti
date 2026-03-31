@@ -30,7 +30,7 @@ def modeli_yukle():
         return False
 
 
-# ----------------- VİDEO ANALİZ MODU -----------------
+#   VİDEO ANALİZ MODU  
 def video_analiz_et():
     global model
     if model is None:
@@ -81,7 +81,7 @@ def video_analiz_et():
     cv2.destroyAllWindows()
 
 
-# ----------------- RESİM ANALİZ MODU -----------------
+#   RESİM ANALİZ MODU  
 def analiz_modu_ac():
     analiz_pen = tk.Toplevel()
     analiz_pen.title("Nesne Tanıma")
@@ -126,7 +126,7 @@ def analiz_modu_ac():
     lbl_resim.pack(pady=15)
 
 
-# ----------------- ETİKETLEME MODU -----------------
+#   ETİKETLEME MODU  
 class EtiketlemePenceresi:
     def __init__(self, master):
         self.top = tk.Toplevel(master)
@@ -309,7 +309,7 @@ class EtiketlemePenceresi:
         self.lbl_info.config(text=f"Kaydedildi! ({secilen_sinif}) - Sıradaki aracı çizebilirsin.")
 
 
-# ----------------- ANA MENÜ -----------------
+#   ANA MENÜ  
 ana_pencere = tk.Tk()
 ana_pencere.title("Araç Kasası Tanımlama By eaS")
 # Buton sığsın diye pencereyi biraz büyüttüm
