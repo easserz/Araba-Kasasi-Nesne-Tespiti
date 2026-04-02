@@ -17,7 +17,7 @@ Bu proje, görüntü ve videolardaki araçları kasa tiplerine göre (Coupe, Hat
 
 ## 3. Eğitim (Training) ve Performans
 Eğitim sürecine ait tüm kayıp (loss) metrikleri, mAP, Precision ve Recall grafikleri `runs/detect/araba_kasasi_v1/` dizininde bulunmaktadır. Parametreler (epoch, lr vb.) veri setinin boyutuna göre optimize edilmiştir.
-* **Sonuç Analizi:** [BURAYA KENDİ CÜMLENİ YAZACAKSIN KANKA. Örnek: "Confusion matrix ve test sonuçları incelendiğinde modelin Sedan ve SUV araçları %90'ın üzerinde doğrulukla ayırdığı, Coupe ve Hatchback kasalarda ise kabul edilebilir düzeyde başarılı olduğu görülmüştür."]
+* **Sonuç Analizi:** Tanımlama ve test sonuçları yüzdelik dilime göre %85'in üzerinde çıkmış olup. Başarı ile Araç Kasaları Tanımlanmıştır. (Coupe,SUV,Sedan ve Hatchback)
 
 ## 4. Kullanım ve Çalışır Sistem (Arayüz Özellikleri)
 Proje, test sürecini kolaylaştırmak adına Tkinter kütüphanesi ile tamamen özgün olarak geliştirilmiş bir arayüze sahiptir.
